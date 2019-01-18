@@ -1,0 +1,56 @@
+<div class="col-md-4">
+
+        <h2>Courses</h2>
+        <div *ngIf="courseService.courses.length">
+        
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Score</th>
+                            <th>Credits</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let course of courseService.courses'>
+                            <th>
+                                <button class="btn btn-primary"
+                                (click)="onSelect(course)">{{ course.id }}
+                                </button>
+                            </th>
+                            <th>{{ course.grade }}</th>
+                            <th>{{ course.credit }}</th> 
+                        </tr>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th></th>
+                            <th>{{ gradeService.creditSum }}</th>
+                        </tr>
+                    </tbody>
+            </table>
+          
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-md-6"> 
+                <button class="btn btn-primary"
+                (click)="showGPA()">Get GPA</button>
+            </div>
+            <div class="col-md-6"> 
+                <button class="btn btn-primary"
+                (click)="clear()">Reset</button>
+            </div>
+        
+        </div>
+
+</div>
+
+<app-generate-gpa [GPA]="gpa"></app-generate-gpa>
+
+<app-course-detail [course]="selectedCourse"></app-course-detail>
+
+
+
+
+ 

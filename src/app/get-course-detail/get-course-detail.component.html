@@ -1,0 +1,59 @@
+<div class="col-md-4">
+
+    <h2>Add Course</h2>
+
+    <form class="form-horizontal" #courseForm="ngForm">
+    
+      <div class="form-group">
+        <label for="code" class="col-sm-5 control-label">Course Code</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="code" placeholder="CSC207"
+          [(ngModel)]="info.id" name="code">
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="name" class="col-sm-5 control-label">Course Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="name" placeholder="Introduction to Algorithm"
+            [(ngModel)]="info.name" name="name">
+        </div>
+      </div>
+    
+      <div class="form-group">
+          <label for="name" class="col-sm-5 control-label">Credit Value</label>
+          <div class="col-sm-6">
+              <select class="form-control"  id="credit"
+              required
+              [(ngModel)]="info.credit" name="credit">
+                <option *ngFor="let credit of credits" [value]="credit">{{ credit }}</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="grade" class="col-sm-5 control-label">Grade</label>
+        <div class="col-sm-6">
+            <select class="form-control"  id="grade"
+            required
+            [(ngModel)]="info.grade" name="grade">
+              <option *ngFor="let grade of Grades" [value]="grade">{{ grade }}</option>
+            </select>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="col-md-offset-6 col-md-6">
+          <button type="submit" class="btn btn-primary"
+            (click)="addCourse(info.id,info.name,info.credit,info.grade);" 
+            (click)="creditValues(info.credit);"
+            (click)="gradeService.getWeightedPoints(info.credit, gradeService.getGradePoints(info.grade));"
+            [disabled]="!courseForm.form.valid">
+            Add Course
+          </button>
+        </div>
+      </div>
+        
+    </form>
+
+</div>

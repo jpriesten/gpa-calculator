@@ -1,0 +1,25 @@
+<div *ngIf="course" class="col-md-6 col-md-offset-3">
+
+    <h2><span>{{ course.name | uppercase }}</span> Details</h2>
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Credit Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ course.id }}</th>
+                    <th>{{ course.name }}</th>
+                    <th>{{ course.grade }}</th>
+                    <th>{{ course.credit }}</th>
+                </tr>
+            </tbody>
+    </table>
+
+
+</div>
